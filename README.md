@@ -12,6 +12,7 @@ Enhanced scp-wrapper python module that enables continuous operations
 
 from scp_manager import SCPManager
 
+# Enter your remote credentials
 with SCPManager(hostname='127.0.0.1', username='', password='', port=22) as wrapper:
 
     # From remote to local
@@ -36,14 +37,14 @@ with SCPManager(hostname='127.0.0.1', username='', password='', port=22) as wrap
 
 from scp_manager import SCPManager
 
-wrapper = SCPManager
+wrapper = SCPManager()
 
 # Some your operations
 ...
 
 try:
 
-    # Connect
+    # Connect: Enter your remote credentials
     wrapper.open(hostname='127.0.0.1', username='', password='', port=22)
 
     # From remote to local
@@ -62,6 +63,9 @@ try:
 
 finally:
     
+    # You are required to close manager when operations are done
     wrapper.close()
 
 ```
+
+---
