@@ -15,6 +15,7 @@ class SCPManager:
         self.ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         self.ssh_client.connect(**self.credentials)
         self.credentials = {}
+        return self
         
     def close(self):
         if self.ssh_client is not None:
@@ -39,8 +40,7 @@ class SCPManager:
         return stdout.readlines()
     
     def __enter__(self):
-        self.open()
-        return self
+        return self.open()
     
     def __exit__(self, exception, exc_type, traceback):
         self.close()
